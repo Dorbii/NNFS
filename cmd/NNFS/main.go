@@ -1,7 +1,12 @@
 package main
 
-//"../../chapter2/chapter2"
+import (
+	"fmt"
+
+	"github.com/Dorbii/NNFS/Chapter2"
+)
 
 func main() {
-	//chapter2()
+	s := Chapter2.Chapter2()
+	fmt.Println(s)
 }
