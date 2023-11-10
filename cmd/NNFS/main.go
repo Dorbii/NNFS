@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/Dorbii/NNFS/Chapter2"
+	"github.com/Dorbii/NNFS/chapter2"
 )
 
 func main() {
-	s := Chapter2.Chapter2()
+	s := chapter2.Chapter2()
 	fmt.Println(s)
 }
