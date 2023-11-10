@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Dorbii/NNFS/chapter2"
+	"github.com/Dorbii/NNFS/internal/chapter2"
 )
 
 func main() {
