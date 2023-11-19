@@ -9,7 +9,7 @@ type Pair[A, B any] struct {
 	Second B
 }
 
-func GoZip[A, B any](a []A, b []B) ([]Pair[A, B], error) {
+func Zip[A, B any](a []A, b []B) ([]Pair[A, B], error) {
 	if len(a) != len(b) {
 		return nil, fmt.Errorf("Length of slices are not equal")
 	}

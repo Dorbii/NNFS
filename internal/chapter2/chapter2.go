@@ -2,6 +2,8 @@ package chapter2
 
 import (
 	"fmt"
+
+	"github.com/Dorbii/NNFS/pkg/goZip"
 )
 
 func Chapter2() string {
@@ -10,25 +12,25 @@ func Chapter2() string {
 	biases := []float32{2.0, 3.0, 0.5}
 
 	layer_outputs := []float32{}
+	biasZip, err := goZip.Zip(weights, biases)
+	if err != nil {
+		fmt.Println(err)
+	}
 
-	for nweights, nbias 
-	// outputs := []float32{
-	// 	inputs[0]*weights1[0] +
-	// 		inputs[1]*weights1[1] +
-	// 		inputs[2]*weights1[2] +
-	// 		inputs[3]*weights1[3] + bias1,
-
-	// 	inputs[0]*weights2[0] +
-	// 		inputs[1]*weights2[1] +
-	// 		inputs[2]*weights2[2] +
-	// 		inputs[3]*weights2[3] + bias2,
-
-	// 	inputs[0]*weights3[0] +
-	// 		inputs[1]*weights3[1] +
-	// 		inputs[2]*weights3[2] +
-	// 		inputs[3]*weights3[3] + bias3,
-	// }
-	// fmt.Println(outputs)
-	fmt.Println(inputs)
+	for _, e := range biasZip {
+		nweights, nbias := e.First, e.Second
+		var nOutput float32 = 0.0
+		inputZip, err := goZip.Zip(inputs, nweights)
+		if err != nil {
+			fmt.Println(err)
+		}
+		for _, e := range inputZip {
+			nInput, weight := e.First, e.Second
+			nOutput += nInput * weight
+		}
+		nOutput += nbias
+		layer_outputs = append(layer_outputs, nOutput)
+	}
+	fmt.Println(layer_outputs)
 	return "Chapter 2"
 }
