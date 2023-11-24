@@ -7,5 +7,7 @@
     },
     "cSpell.words": [
         "Dorbii"
-    ]
+    ],
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
 }
