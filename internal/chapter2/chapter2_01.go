@@ -3,6 +3,8 @@ package chapter2
 import (
 	"fmt"
 
+	"github.com/Dorbii/NNFS/internal/utils/printSolution"
+
 	"github.com/Dorbii/NNFS/pkg/goZip"
 )
 
@@ -30,6 +32,8 @@ func Chapter2_01() string {
 		nOutput += wb.Second //bias
 		layerOutputs = append(layerOutputs, nOutput)
 	}
-	fmt.Println(layerOutputs)
-	return "Chapter 2"
+
+	s := printSolution.PrintSolution(printSolution.GetFunctionName(Chapter2_01), layerOutputs)
+	return s
+
 }
