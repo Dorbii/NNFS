@@ -13,7 +13,7 @@ type Config struct {
 
 var conf *Config
 
-func read(file string) *Config {
+func Read(file string) *Config {
 	conf = &Config{}
 	f, _ := os.Open(file)
 	json.NewDecoder(f).Decode(&conf)
