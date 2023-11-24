@@ -5,9 +5,19 @@ import (
 	"os"
 )
 
-func read(file string, c interface{}) {
+type Config struct {
+	Inputs  []float32   `json:"inputs"`
+	Weights [][]float32 `json:"weights"`
+	Biases  []float32   `json:"biases"`
+}
+
+var conf *Config
+
+func read(file string) *Config {
+	conf = &Config{}
 	f, _ := os.Open(file)
-	json.NewDecoder(f).Decode(&c)
+	json.NewDecoder(f).Decode(&conf)
+	return conf
 }
 
 // func Save(fileName string) {
