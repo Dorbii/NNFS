@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	s := chapter2.Chapter2()
+	s := chapter2.Chapter2_01()
 	fmt.Println(s)
 }
