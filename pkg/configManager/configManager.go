@@ -18,10 +18,12 @@ type JConfig struct {
 }
 
 type YConfig struct {
-	Section string    `yaml:"section"`
-	Inputs  []float32 `yaml:"inputs"`
-	Weights []float32 `yaml:"weights"`
-	Biases  []float32 `yaml:"biases"`
+	Section  string    `yaml:"section"`
+	Inputs   []float32 `yaml:"inputs"`
+	Weights  []float32 `yaml:"weights"`
+	Biases   []float32 `yaml:"biases"`
+	Weights2 []float32 `yaml:"weights2,omitempty"`
+	Biases2  []float32 `yaml:"biases2,omitempty"`
 }
 
 func ReadJSON(file string) *JConfig {

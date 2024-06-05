@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/Dorbii/NNFS/internal/chapter2"
+	"github.com/Dorbii/NNFS/internal/datasets"
 )
 
 func main() {
 
-	chapter2.Sections()
+	//chapter2.Sections()
+	datasets.PlotData()
 }
