@@ -36,6 +36,12 @@ func Error(etype string, args ...any) {
 			Foreground(lipgloss.Color("204")).
 			SetString(fmt.Sprintf("adding \n\n%v \n\nand\n\n%v", args[0], args[1]))
 		logger.Error(msgFlag, "msg", msg)
+	case "mulScalar":
+		msg := lipgloss.NewStyle().
+			Bold(true).
+			Foreground(lipgloss.Color("204")).
+			SetString(fmt.Sprintf("when multiplying scalar \n\n%v\n\n", args[0]))
+		logger.Error(msgFlag, "msg", msg)
 	}
 }
 func Output(output ...any) {

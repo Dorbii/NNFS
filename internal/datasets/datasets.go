@@ -10,37 +10,42 @@ import (
 	"gonum.org/v1/plot/vg/draw"
 )
 
-func PlotData() {
-	p := plot.New()
-	dataX, dataY := spiralData(100, 3)
-	cmapBRG := map[float64]color.Color{
-		0: color.RGBA{R: 0, G: 0, B: 255, A: 255},
-		1: color.RGBA{R: 255, G: 0, B: 0, A: 255},
-		2: color.RGBA{R: 0, G: 255, B: 0, A: 255},
-	}
-
-	for k, v := range cmapBRG {
-		xys := plotter.XYs{}
-		for i := range dataX {
-			if dataY[i] == k {
-				xys = append(xys, plotter.XY{X: dataX[i][0], Y: dataX[i][1]})
-			}
+func PlotData(plotType string) {
+	switch plotType {
+	case "spiral":
+		p := plot.New()
+		dataX, dataY := SpiralData(100, 3)
+		cmapBRG := map[float64]color.Color{
+			0: color.RGBA{R: 0, G: 0, B: 255, A: 255},
+			1: color.RGBA{R: 255, G: 0, B: 0, A: 255},
+			2: color.RGBA{R: 0, G: 255, B: 0, A: 255},
 		}
-		scatter, err := plotter.NewScatter(xys)
+		for k, v := range cmapBRG {
+			xys := plotter.XYs{}
+			for i := range dataX {
+				if dataY[i] == k {
+					xys = append(xys, plotter.XY{X: dataX[i][0], Y: dataX[i][1]})
+				}
+			}
+			scatter, err := plotter.NewScatter(xys)
+			if err != nil {
+				panic(err)
+			}
+			scatter.GlyphStyle.Color = v
+			scatter.GlyphStyle.Shape = draw.CircleGlyph{}
+			scatter.GlyphStyle.Radius = 3
+			p.Add(scatter)
+		}
+		err := p.Save(450, 400, "spiral.png")
 		if err != nil {
+			//! add logger here
 			panic(err)
 		}
-		scatter.GlyphStyle.Color = v
-		scatter.GlyphStyle.Shape = draw.CircleGlyph{}
-		p.Add(scatter)
 	}
-	err := p.Save(450, 400, "spiral.png")
-	if err != nil {
-		panic(err)
-	}
+
 }
 
-func spiralData(samples, classes int) ([][]float64, []float64) {
+func SpiralData(samples, classes int) ([][]float64, []float64) {
 	//x := mat.NewDense(samples*classes, 2, nil)
 	x := [][]float64{}
 	y := []float64{}

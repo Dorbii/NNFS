@@ -2,30 +2,14 @@ package chapter2
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/Dorbii/NNFS/internal/transforms"
 	"github.com/Dorbii/NNFS/internal/utils"
 	"github.com/Dorbii/NNFS/pkg/configManager"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/charmbracelet/log"
 	t "gorgonia.org/tensor"
 )
 
-var logger *log.Logger
-
-func init() {
-	logger = log.New(os.Stdout)
-	styles := log.DefaultStyles()
-	styles.Levels[log.ErrorLevel] = lipgloss.NewStyle().
-		SetString("ERROR: ").
-		Padding(0, 1, 0, 1).
-		Foreground(lipgloss.Color("204"))
-	// Add a custom style for key `err`
-	styles.Keys["err"] = lipgloss.NewStyle().Foreground(lipgloss.Color("204"))
-	styles.Values["err"] = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("204"))
-	logger.SetStyles(styles)
-}
 func Sections() {
 	config := configManager.ReadYAML("C:\\Users\\Steve\\Documents\\Github\\NNFS\\configs\\chapter2.yaml")
 	fmt.Println(lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("14")).SetString("Chapter 2"))
