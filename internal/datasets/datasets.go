@@ -36,7 +36,7 @@ func PlotData(plotType string) {
 			scatter.GlyphStyle.Radius = 3
 			p.Add(scatter)
 		}
-		err := p.Save(450, 400, "spiral.png")
+		err := p.Save(450, 400, "spiral.svg")
 		if err != nil {
 			//! add logger here
 			panic(err)

@@ -1,15 +1,12 @@
 package main
 
-import (
-	"github.com/Dorbii/NNFS/internal/chapter2"
-	"github.com/Dorbii/NNFS/internal/chapter3"
-	"github.com/Dorbii/NNFS/internal/chapter4"
-)
+import "github.com/Dorbii/NNFS/internal/datasets"
 
 func main() {
 
-	chapter2.Sections()
-	chapter3.Sections()
-	chapter4.Sections()
+	// chapter2.Sections()
+	// chapter3.Sections()
+	// chapter4.Sections()
+	datasets.PlotData("spiral")
 
 }
